@@ -1,4 +1,4 @@
-cmake_minimum_required(VERSION 3.26)
+cmake_minimum_required(VERSION 3.22)
 project(sobel)
 
 set(CMAKE_CXX_STANDARD 23)
@@ -14,12 +14,10 @@ include_directories(
 
 
 add_executable(${PROJECT_NAME}
-        include/kernel.hpp
-
         src/main.cpp
         src/kernel.cpp
-        include/utils.hpp
-        src/utils.cpp)
+        src/utils.cpp
+)
 
 set(OpenCV_LIBS opencv_core opencv_imgproc opencv_highgui opencv_imgcodecs)
 

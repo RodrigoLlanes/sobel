@@ -63,13 +63,15 @@ T& Kernel<T>::operator()(int row, int col) {
 
 template<typename T>
 T Kernel<T>::norma() const {
-    T res = 0;
+    T pos = 0, neg = 0;
     for (int row = 0; row < height; row++) {
         for (int col = 0; col < width; col++) {
             if (data[row][col] > 0) {
-                res += data[row][col];
+                pos += data[row][col];
+            } else {
+                neg += data[row][col];
             }
         }
     }
-    return res;
+    return max(pos, neg);
 }
