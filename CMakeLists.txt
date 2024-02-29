@@ -17,6 +17,8 @@ add_executable(${PROJECT_NAME}
         src/main.cpp
         src/kernel.cpp
         src/utils.cpp
+        include/sobel.hpp
+        src/sobel.cpp
 )
 
 set(OpenCV_LIBS opencv_core opencv_imgproc opencv_highgui opencv_imgcodecs)

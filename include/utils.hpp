@@ -13,7 +13,11 @@
 
 cv::Mat loadImage(const std::string& path);
 
+void saveImage(const cv::Mat& image, const std::string& path);
+
 void plotImage(const cv::Mat& image, const std::string& title = "ImagePlot");
+
+void silentOpenCV();
 
 
 #endif //SOBEL_UTILS_HPP

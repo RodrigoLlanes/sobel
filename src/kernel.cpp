@@ -73,5 +73,5 @@ T Kernel<T>::norma() const {
             }
         }
     }
-    return max(pos, neg);
+    return fmax(pos, neg);
 }
