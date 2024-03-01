@@ -5,6 +5,7 @@
 #ifndef SOBEL_KERNEL_HPP
 #define SOBEL_KERNEL_HPP
 
+
 template<typename T>
 class Kernel {
 public:

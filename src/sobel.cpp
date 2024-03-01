@@ -2,13 +2,13 @@
 // Created by Rodrigo Llanes on 29/02/2024.
 //
 
+#include <iostream>
+#include <omp.h>
 #include "sobel.hpp"
-
-using namespace cv;
 
 
 template<typename T>
-static uint8_t applyKernel(const Mat& img, Kernel<T>& kernel, int x, int y, int norma) {
+static uint8_t applyKernel(const Image& img, Kernel<T>& kernel, int x, int y, int norma) {
     T hc[3] = {0, 0, 0}, vc[3] = {0, 0, 0};
     for (int dy = -kernel.vMargin; dy <= kernel.vMargin; dy++) {
         for (int dx = -kernel.hMargin; dx <= kernel.hMargin; dx++) {
@@ -28,8 +28,8 @@ static uint8_t applyKernel(const Mat& img, Kernel<T>& kernel, int x, int y, int 
 
 
 template<typename T>
-Mat sobel(const Mat& img, Kernel<T>& kernel) {
-    Mat res(img.rows, img.cols, CV_8UC1, Scalar(0));
+Image convolution(const Image& img, Kernel<T>& kernel) {
+    Image res(img.rows, img.cols, CV_8UC1, cv::Scalar(0));
 
     T norma = kernel.norma() * 3;
 
@@ -44,11 +44,11 @@ Mat sobel(const Mat& img, Kernel<T>& kernel) {
 }
 
 
-Mat sobel(const Mat& img) {
+Image sobel(const Image& img) {
     int data[3][3] = {{1, 0, -1},
                       {2, 0, -2},
                       {1, 0, -1}};
-    Kernel<int> kernel = Kernel<int>::fromArray<3,3>(data);
+    Kernel kernel = Kernel<int>::fromArray<3,3>(data);
 
-    return sobel<int>(img, kernel);
+    return convolution<int>(img, kernel);
 }

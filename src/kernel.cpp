@@ -4,6 +4,8 @@
 
 
 #include <stdexcept>
+#include <string>
+#include <format>
 #include "kernel.hpp"
 
 
@@ -56,7 +58,14 @@ Kernel<T> Kernel<T>::fromArray(T array[H][W]) {
 
 template<typename T>
 T& Kernel<T>::operator()(int row, int col) {
-    // TODO: Check and throw error
+    if (0 > row || row >= height) {
+        std::string msg = std::format("Row index {} out of bounds on kernel of size {}x{}.", row, height, width);
+        throw std::runtime_error(msg);
+    }
+    if (0 > col || col >= width) {
+        std::string msg = std::format("Col index {} out of bounds on kernel of size {}x{}.", col, height, width);
+        throw std::runtime_error(msg);
+    }
     return data[row][col];
 }
 

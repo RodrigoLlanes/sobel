@@ -5,14 +5,12 @@
 #ifndef SOBEL_SOBEL_HPP
 #define SOBEL_SOBEL_HPP
 
-#include <iostream>
-#include <omp.h>
 #include "kernel.hpp"
 #include "utils.hpp"
 
 template<typename T>
-cv::Mat sobel(const cv::Mat& img, Kernel<T>& kernel);
+Image convolution(const Image& img, Kernel<T>& kernel);
 
-cv::Mat sobel(const cv::Mat& img);
+Image sobel(const Image& img);
 
 #endif //SOBEL_SOBEL_HPP

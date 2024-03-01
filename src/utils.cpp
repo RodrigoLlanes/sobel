@@ -4,13 +4,13 @@
 
 #include <iostream>
 #include <opencv2/core/utils/logger.hpp>
+#include <opencv2/imgcodecs.hpp>
+#include <opencv2/highgui.hpp>
 #include "utils.hpp"
 
-using namespace cv;
 
-
-Mat loadImage(const std::string& path) {
-    Mat img = imread(path, IMREAD_COLOR);
+Image loadImage(const std::string& path) {
+    Image img = imread(path, cv::IMREAD_COLOR);
     if(img.empty()) {
         throw std::runtime_error("Image not found " + path);
     }
@@ -18,7 +18,7 @@ Mat loadImage(const std::string& path) {
 }
 
 
-void saveImage(const cv::Mat& image, const std::string& path) {
+void saveImage(const Image& image, const std::string& path) {
     try {
         imwrite(path, image);
     } catch (std::exception& exception) {
@@ -27,7 +27,7 @@ void saveImage(const cv::Mat& image, const std::string& path) {
 }
 
 
-void plotImage(const Mat& image, const std::string& title) {
+void plotImage(const Image& image, const std::string& title) {
     cv::namedWindow(title, cv::WINDOW_NORMAL);
     cv::imshow(title, image);
     cv::waitKey(0);

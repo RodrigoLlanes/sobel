@@ -3,21 +3,18 @@
 #include "sobel.hpp"
 
 
-using namespace cv;
-
-
 int main(int argc, char *argv[]) {
     if (2 > argc || argc > 3) {
         printf("Expected 1 or 2 arguments, but %d received.\n", argc);
-        printf("Usage: sobel input [output]\n");
+        printf("Usage: convolution input [output]\n");
         return 1;
     }
 
     silentOpenCV();
 
     try {
-        Mat img = loadImage(argv[1]);
-        Mat res = sobel(img);
+        Image img = loadImage(argv[1]);
+        Image res = sobel(img);
 
         if (argc == 3) {
             saveImage(res, argv[2]);

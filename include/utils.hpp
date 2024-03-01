@@ -6,16 +6,15 @@
 #define SOBEL_UTILS_HPP
 
 #include <opencv2/core.hpp>
-#include <opencv2/imgcodecs.hpp>
-#include <opencv2/highgui.hpp>
 #include <string>
 
+typedef cv::Mat Image;
 
-cv::Mat loadImage(const std::string& path);
+Image loadImage(const std::string& path);
 
-void saveImage(const cv::Mat& image, const std::string& path);
+void saveImage(const Image& image, const std::string& path);
 
-void plotImage(const cv::Mat& image, const std::string& title = "ImagePlot");
+void plotImage(const Image& image, const std::string& title = "ImagePlot");
 
 void silentOpenCV();
 
