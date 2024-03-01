@@ -1,10 +1,16 @@
 //
 // Created by Rodrigo Llanes on 29/02/2024.
 //
+#if __has_include(<format>)
+    #define FORMAT
+    #include <format>
+#else
+    #define STR(v) std::to_string(v)
+#endif
 
-
+#include <string>
 #include <stdexcept>
-#include <format>
+#include <algorithm>
 #include "kernel.hpp"
 
 
@@ -58,11 +64,19 @@ Kernel<T> Kernel<T>::fromArray(T array[H][W]) {
 template<typename T>
 T& Kernel<T>::operator()(int row, int col) {
     if (0 > row || row >= height) {
-        std::string msg = std::format("Row index {} out of bounds on kernel of size {}x{}.", row, height, width);
+        #ifdef FORMAT
+            std::string msg = std::format("Row index {} out of bounds on kernel of size {}x{}.", row, height, width);
+        #else
+            std::string msg = "Row index " + STR(row) + " out of bounds on kernel of size " + STR(height) + "x" + STR(width) + ".";
+        #endif
         throw std::runtime_error(msg);
     }
     if (0 > col || col >= width) {
-        std::string msg = std::format("Col index {} out of bounds on kernel of size {}x{}.", col, height, width);
+        #ifdef FORMAT
+                std::string msg = std::format("Col index {} out of bounds on kernel of size {}x{}.", col, height, width);
+        #else
+                std::string msg = "Col index " + STR(col) + " out of bounds on kernel of size " + STR(height) + "x" + STR(width) + ".";
+        #endif
         throw std::runtime_error(msg);
     }
     return data[row][col];
@@ -81,5 +95,5 @@ T Kernel<T>::norma() const {
             }
         }
     }
-    return fmax(pos, neg);
+    return std::max(pos, neg);
 }
