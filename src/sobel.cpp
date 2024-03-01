@@ -48,7 +48,7 @@ Image sobel(const Image& img) {
     int data[3][3] = {{1, 0, -1},
                       {2, 0, -2},
                       {1, 0, -1}};
-    Kernel kernel = Kernel<int>::fromArray<3,3>(data);
+    Kernel<int> kernel = Kernel<int>::fromArray<3,3>(data);
 
     return convolution<int>(img, kernel);
 }
