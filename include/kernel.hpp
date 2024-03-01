@@ -5,7 +5,6 @@
 #ifndef SOBEL_KERNEL_HPP
 #define SOBEL_KERNEL_HPP
 
-
 template<typename T>
 class Kernel {
 public:
@@ -24,5 +23,7 @@ public:
 private:
     T** data;
 };
+
+#include "kernel.cpp"
 
 #endif //SOBEL_KERNEL_HPP

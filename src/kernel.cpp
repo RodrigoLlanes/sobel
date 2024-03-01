@@ -4,7 +4,6 @@
 
 
 #include <stdexcept>
-#include <string>
 #include <format>
 #include "kernel.hpp"
 

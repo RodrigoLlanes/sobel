@@ -15,7 +15,7 @@ include_directories(
 
 add_executable(${PROJECT_NAME}
         src/main.cpp
-        src/kernel.cpp
+        #src/kernel.cpp
         src/utils.cpp
         include/sobel.hpp
         src/sobel.cpp
