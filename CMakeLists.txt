@@ -6,7 +6,8 @@ set(CMAKE_CXX_STANDARD 23)
 find_package(OpenMP REQUIRED)
 find_package(OpenCV REQUIRED)
 include_directories(
-        "include"
+        src
+        include
         ${OpenCV_INCLUDE_DIRS}
 )
 
